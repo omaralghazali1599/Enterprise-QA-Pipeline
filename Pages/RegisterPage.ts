@@ -1,6 +1,6 @@
 import { APIRequestContext, BrowserContext, Page } from "@playwright/test";
 import User from "../Models/User";
-import UserApi from "../API/USerAPI";
+import UserApi from "../API/UserAPI";
 import config from "../playwright.config";
 export default class RegisterPage {
 
