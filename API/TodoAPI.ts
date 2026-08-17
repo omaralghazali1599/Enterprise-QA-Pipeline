@@ -7,8 +7,8 @@ export default class TodoApi {
     }
     async addTodo(user: User, item = 'Playwright', isCompleted = false) {
         return await this.request.post('/api/v1/tasks', {
-            data: { isCompleted, item },
-            headers: { Authorization: `Bearer ${user.getAccessToken()}` }
+        data: { isCompleted, item },
+        headers: { Authorization: `Bearer ${user.getAccessToken()}` }
   });
 }
 }

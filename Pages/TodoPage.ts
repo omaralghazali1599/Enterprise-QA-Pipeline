@@ -27,7 +27,7 @@ export default class TodoPage {
     }
     getTodoByIndex(index: number) {
         return this.page.locator(this.todoItem).nth(index);   // return locator, not string
-    }
+}
     async addTodoUsingApi(user: User) {
         return await new TodoApi(this.request!).addTodo(user)
     }   
@@ -37,4 +37,5 @@ export default class TodoPage {
     getNoTodoMessge(){
         return this.page.locator(this.noTodoMessage);
     }
+    
 }
