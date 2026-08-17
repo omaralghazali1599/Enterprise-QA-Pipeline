@@ -1,7 +1,8 @@
 import { APIRequestContext, BrowserContext, Page } from "@playwright/test";
 import User from "../Models/User";
 import UserApi from "../API/UserAPI";
-import config from "../playwright.config";
+import { BASE_URL } from "../config/env";
+
 export default class RegisterPage {
 
     private page: Page;
@@ -62,17 +63,17 @@ export default class RegisterPage {
             {
                 name: 'access_token',
                 value: acessToken,
-                url: config.use?.baseURL,
+                url: BASE_URL,
             },
             {
                 name: 'firstName',
                 value: firstName,
-                url: config.use?.baseURL,
+                url: BASE_URL,
             },
             {
                 name: 'userID',
                 value: userID,
-                url: config.use?.baseURL,
+                url: BASE_URL,
             }
         ]);
     }
