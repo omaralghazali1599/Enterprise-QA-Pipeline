@@ -5,15 +5,10 @@ export default class TodoApi {
     constructor(request: APIRequestContext) {
         this.request = request;
     }
-    async addTodo(user:User) {
-        return await this.request.post('api/v1/tasks', {
-            data: {
-                isCompleted: false,
-                item: 'Playwright'
-            },
-            headers: {
-                Authorization: `Bearer ${user.getAccessToken()}`
-            }
-        });
-    }
+    async addTodo(user: User, item = 'Playwright', isCompleted = false) {
+        return await this.request.post('/api/v1/tasks', {
+            data: { isCompleted, item },
+            headers: { Authorization: `Bearer ${user.getAccessToken()}` }
+  });
+}
 }
