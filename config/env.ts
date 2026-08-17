@@ -7,4 +7,4 @@ if (!resolved.startsWith('http')) {
   );
 }
 
-export const BASE_URL = resolved;
+export const BASE_URL = resolved; 
