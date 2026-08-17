@@ -25,8 +25,8 @@ export default class TodoPage {
     getWelcomeMessage() {
         return this.page.locator(this.welcomeMessage);
     }
-    async getTodoByIndex(index: number) {
-        return await this.page.locator(this.todoItem).nth(index).innerText();
+    getTodoByIndex(index: number) {
+        return this.page.locator(this.todoItem).nth(index);   // return locator, not string
     }
     async addTodoUsingApi(user: User) {
         return await new TodoApi(this.request!).addTodo(user)

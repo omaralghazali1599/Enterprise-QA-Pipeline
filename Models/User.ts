@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { randomUUID } from "node:crypto";
 export default class User {
     private firstName:string;
     private lastName:string;
@@ -9,7 +10,7 @@ export default class User {
     constructor(){
         this.firstName = faker.person.firstName();
         this.lastName = faker.person.lastName();
-        this.email = faker.internet.email();
+        this.email = `qa.${Date.now()}.${randomUUID().slice(0, 8)}@example.com`;
         this.password = "Password123";
     }
     getFirstName(){

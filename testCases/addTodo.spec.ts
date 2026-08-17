@@ -11,6 +11,6 @@ test("Create a todo task: ", async ({ page, request, context }) => {
     await newTodoPage.load();
     await newTodoPage.addNewTodo('Playwright')
     const todoPage = new TodoPage(page);
-    const todoText = await todoPage.getTodoByIndex(0);
-    expect(todoText).toEqual('Playwright');
+    await expect(page).toHaveURL(/\/todo$/);
+    await expect(todoPage.getTodoByIndex(0)).toHaveText('Playwright');
 });

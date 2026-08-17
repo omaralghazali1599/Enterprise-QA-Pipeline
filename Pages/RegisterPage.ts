@@ -1,4 +1,4 @@
-import { APIRequestContext, BrowserContext, Page } from "@playwright/test";
+import { APIRequestContext, BrowserContext, Page, expect } from "@playwright/test";
 import User from "../Models/User";
 import UserApi from "../API/UserAPI";
 import { BASE_URL } from "../config/env";
@@ -52,6 +52,7 @@ export default class RegisterPage {
 
     async registerUsingApi(user: User) {
         const response = await new UserApi(this.request!).register(user)
+        expect(response.ok(), `Registration failed: ${response.status()} ${await response.text()}`).toBeTruthy();
         // Set cookies
         const responseBody = await response.json();
         const acessToken = responseBody.access_token;
@@ -59,7 +60,7 @@ export default class RegisterPage {
         const userID = responseBody.userID;
         user.setAccessToken(acessToken);
 
-        await this.context!.addCookies([
+        await this.context!.addCookies([    
             {
                 name: 'access_token',
                 value: acessToken,
