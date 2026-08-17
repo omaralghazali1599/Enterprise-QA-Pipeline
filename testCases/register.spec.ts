@@ -9,5 +9,6 @@ test("Register a new User: ", async ({ page }) => {
     await registerPage.register(user);
     const todoPage = new TodoPage(page);
     const welcomeMessage = todoPage.getWelcomeMessage();
-    await expect(welcomeMessage).toHaveText(new RegExp(`Good (Evening|Morning|Afternoon|) || TIME TO SLEEP ${user.getFirstName()}`, 'i'));
+    await expect(welcomeMessage).toHaveText("omar");
+    // new RegExp(`Good (Evening|Morning|Afternoon|) || TIME TO SLEEP ${user.getFirstName()}`, 'i')
     });
